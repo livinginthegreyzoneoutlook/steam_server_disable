@@ -8,6 +8,13 @@ description = "A GUI tool to block access to Steam (CSGO/Dota) servers region-wi
 homepage = "https://github.com/ishbosamiya/steam_server_disable"
 repository = "https://github.com/ishbosamiya/steam_server_disable"
 keywords = ["steam", "firewall", "gui"]
+publish = false
+
+[package.metadata.wix]
+upgrade-guid = "F8C1BF6D-440A-4484-ADFA-3799593169B8"
+path-guid = "484D83EC-D337-4DB1-BC5D-2E9187957DD8"
+license = false
+eula = false
 
 [[bin]]
 name = "steam_server_disable"
@@ -46,3 +53,23 @@ is_elevated = "0.1"
 [profile.release-with-symbols]
 inherits = "release"
 debug = true
+
+# The profile that 'cargo dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+# Config for 'cargo dist'
+[workspace.metadata.dist]
+# The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.13.1"
+# CI backends to support
+ci = ["github"]
+# The installers to generate for each app
+installers = ["shell", "msi"]
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+# Publish jobs to run in CI
+pr-run-mode = "plan"
+# Whether to install an updater program
+install-updater = false
