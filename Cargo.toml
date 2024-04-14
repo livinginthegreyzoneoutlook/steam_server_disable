@@ -32,8 +32,8 @@ curl = "0.4"
 #
 # reference: <https://github.com/cross-rs/cross/wiki/Recipes#vendored>
 openssl-sys = { version = "0.9", features = ["vendored"] }
-egui_glfw = { version = "0.6.0", git = "https://github.com/ishbosamiya/egui_glfw.git", branch = "v0.6.0-release" }
-glfw = "0.53"
+egui_glfw = { version = "0.6.1", git = "https://github.com/ishbosamiya/egui_glfw.git", branch = "v0.6.1-release" }
+glfw = "0.55"
 gl = "0.14"
 icmp-socket = "0.2"
 log = "0.4"
@@ -42,6 +42,9 @@ lazy_static = "1.4"
 directories = "4.0"
 regex = "1.10"
 clap = { version = "4.0", features = ["derive", "env"] }
+
+[patch.crates-io]
+glfw-sys = { git = "https://github.com/livinginthegreyzoneoutlook/glfw-sys.git" }
 
 [target.'cfg(unix)'.dependencies]
 iptables = "0.4.3"
